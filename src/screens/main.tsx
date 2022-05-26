@@ -7,14 +7,18 @@ import {
     useColorModeValue
 } from 'native-base'
 import ButtonToggle from '../components/ButtonToggle'
+import AnimatedCheckbox from '../components/AnimatedCheckbox'
 
 export default function MainScreen  () {
     return (
     <Center _light={{bg:'blueGray.50'}} _dark={{bg:'blueGray.900'}}  px={4} flex={1} >
         <VStack space={8} alignItems="center">
-        <Box bg={useColorModeValue('red.500','yellow.200')}>
+        <Box w='100px' h='100px'>
+            <AnimatedCheckbox/>
+        </Box>
+        <Box p={10} bg={useColorModeValue('red.500','yellow.200')}>
             <Text>
-                Hellosss
+                Hello
             </Text>
         </Box>
         <ButtonToggle/>
