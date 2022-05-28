@@ -22,15 +22,16 @@ const outlineBoxPath =
 const AnimatedPath = Animated.createAnimatedComponent(Path)
 
 interface Props {
-  checked?:boolean
+  checked?:boolean,
+  checkmarkColor:string,
+  boxOutlineColor:string,
+  highLightColor:string
 }
 
 const AnimatedCheckbox = (props:Props) =>{
 
-  const {checked} = props
-    const checkMarkColor = '#000000'
-    const highLightColor =  '#ff0000'
-    const boxOutlineColor = '#000000'
+  const {checked,checkmarkColor,highLightColor,boxOutlineColor} = props
+    
 
 
     const progress = useSharedValue(0)
@@ -72,7 +73,7 @@ const AnimatedCheckbox = (props:Props) =>{
             <AnimatedStroke progress={progress} d={checkMarkPath} stroke={highLightColor} strokeWidth={10} strokeLinejoin="round" strokeLinecap="round" strokeOpacity={checked||false?1:0}/>
             <AnimatedPath d={outlineBoxPath} strokeWidth={7} strokeLinejoin="round" strokeLinecap="round" animatedProps={animatedBoxProps}/>
             <G clipPath='url(#clipPath)'>
-            <AnimatedStroke progress={progress} d={checkMarkPath} stroke={checkMarkColor} strokeWidth={10} strokeLinejoin="round" strokeLinecap="round" strokeOpacity={checked||false?1:0}/>
+            <AnimatedStroke progress={progress} d={checkMarkPath} stroke={checkmarkColor} strokeWidth={10} strokeLinejoin="round" strokeLinecap="round" strokeOpacity={checked||false?1:0}/>
             </G>
         </Svg>
     )

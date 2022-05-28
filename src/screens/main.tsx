@@ -9,6 +9,7 @@ import {
 } from 'native-base'
 import ButtonToggle from '../components/ButtonToggle'
 import AnimatedCheckbox from '../components/AnimatedCheckbox'
+import TaskItem from '../components/TaskItem'
 
 export default function MainScreen  () {
 
@@ -20,12 +21,10 @@ export default function MainScreen  () {
     <Center _light={{bg:'blueGray.50'}} _dark={{bg:'blueGray.900'}}  px={4} flex={1} >
         
         <VStack space={8} alignItems="center">
-        
-        <Box w='100px' h='100px'>
-        <Pressable onPress={handlePressCheckBox}>
-            <AnimatedCheckbox checked={checked}/>
-        </Pressable>
+        <Box>
+            <TaskItem isDone={checked} onToggleCheckbox={handlePressCheckBox}/>
         </Box>
+
         <Box p={10} bg={useColorModeValue('red.500','yellow.200')}>
             <Text>
                 Hello
