@@ -53,7 +53,7 @@ const TaskItem = (props:Props) =>{
         </Pressable>
         </Box>
 
-        {isEditing?(<Input placeholder={subject} vsadalue={subject} variant='unstyled' fontSize={19} px={1} py={0} autoFocus blurOnSubmit onChange={handleChangeSubject} onBlur={onFinishEditing}/>)
+        {isEditing?(<Input placeholder={subject} value={subject} variant='unstyled' fontSize={19} px={1} py={0} autoFocus blurOnSubmit onChange={handleChangeSubject} onBlur={onFinishEditing}/>)
         :(<AnimatedTaskLabel 
         textColor={activeTextColor} 
         inactiveTextColor={doneTextColor}
