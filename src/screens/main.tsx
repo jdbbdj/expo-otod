@@ -18,7 +18,7 @@ export default function MainScreen  () {
         setChecked(prev=>!prev)
     },[])
     return (
-    <Center _light={{bg:'blueGray.50'}} _dark={{bg:'blueGray.900'}}  px={4} flex={1} >
+    <Center _light={{bg:'blueGray.50'}} _dark={{bg:'blueGray.900'}}   flex={1} >
         
         <VStack space={8} alignItems="center" w='full'>
         

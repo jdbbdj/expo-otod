@@ -26,7 +26,7 @@ interface Props extends Pick<PanGestureHandlerProps, 'simultaneousHandlers'>{
 }
 
 const {width: SCREEN_WIDTH} = Dimensions.get('window')
-const SWIPE_THRESHOLD = -SCREEN_WIDTH*0.3
+const SWIPE_THRESHOLD = -SCREEN_WIDTH*0.2
 
 const SwipeView = (props:Props) =>{
     const {children,backView,onSwipeLeft,simultaneousHandlers} = props
@@ -54,7 +54,7 @@ const SwipeView = (props:Props) =>{
             }
         ]
     }))
-    return <StyledView>
+    return <StyledView w='full'>
         {backView&&(
             <Box position='absolute' left={0} right={0} top={0} bottom={0}>
                 {backView}
