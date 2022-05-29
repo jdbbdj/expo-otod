@@ -21,9 +21,9 @@ export default function MainScreen  () {
     <Center _light={{bg:'blueGray.50'}} _dark={{bg:'blueGray.900'}}  px={4} flex={1} >
         
         <VStack space={8} alignItems="center">
-        <Box>
-            <TaskItem isDone={checked} onToggleCheckbox={handlePressCheckBox}/>
-        </Box>
+        
+        <TaskItem isDone={checked} onToggleCheckbox={handlePressCheckBox}/>
+        
 
         <Box p={10} bg={useColorModeValue('red.500','yellow.200')}>
             <Text>

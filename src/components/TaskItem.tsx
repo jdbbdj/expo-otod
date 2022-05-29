@@ -2,8 +2,9 @@ import React, {useCallback} from 'react'
 import {
     Pressable,
 } from 'react-native'
-import {Box, useTheme, themeTools, useColorModeValue} from 'native-base'
+import {Box, useTheme,HStack,Text, themeTools, useColorModeValue} from 'native-base'
 import AnimatedCheckbox from './AnimatedCheckbox'
+import AnimatedTaskLabel from './AnimatedTaskLabel'
 
 interface Props {
     isDone:boolean,
@@ -19,7 +20,8 @@ const TaskItem = (props:Props) =>{
     const activeTextColor = themeTools.getColor(theme,useColorModeValue('darkText','lightText'))
     const doneTextColor = themeTools.getColor(theme,useColorModeValue('muted.400','muted.600'))
     
-    return (<Box width={30} height={30} mr={2}>
+    return (<HStack alignItems='center' w='full' px={4} py={2} bg={useColorModeValue('warmGray.50','primary.900')}>
+        <Box width={30} height={30} mr={2}>
         <Pressable onPress={onToggleCheckbox}>
         <AnimatedCheckbox 
         checkmarkColor={checkmarkColor} 
@@ -28,7 +30,14 @@ const TaskItem = (props:Props) =>{
         checked={isDone}
         />
         </Pressable>
-        </Box>)
+        </Box>
+        <AnimatedTaskLabel 
+        textColor={activeTextColor} 
+        inactiveTextColor={doneTextColor}
+        strikeTrough={isDone}>
+            Task Item
+        </AnimatedTaskLabel>
+    </HStack>)
 }
 
 export default TaskItem
