@@ -9,7 +9,7 @@ const App =  () =>{
     return (
         <Drawer.Navigator initialRouteName='Main'>
             <Drawer.Screen name='Main' component={MainScreen}/>
-            <Drawer.Screen name='Roulette' component={RouletteScreen}/>
+            <Drawer.Screen name='Scheduler' component={RouletteScreen}/>
         </Drawer.Navigator>
     )
 }
