@@ -1,7 +1,8 @@
 import { View,Dimensions } from 'react-native'
-import { Center,VStack,Box, HStack,Text,ScrollView } from 'native-base'
+import { Center,VStack,Box, HStack,Text,ScrollView,Icon, Heading } from 'native-base'
 import React,{useState,useCallback,useRef, useEffect} from 'react'
 import { SCHEDULE_DATA } from '../utils/data';
+import {Feather,MaterialCommunityIcons,MaterialIcons, SimpleLineIcons} from '@expo/vector-icons'
 const RouletteScreen = () => {
   const {width: SCREEN_WIDTH,height:SCREEN_HEIGHT} = Dimensions.get('window');
   const [totalList, setTotalList] = useState(0);
@@ -44,11 +45,27 @@ const RouletteScreen = () => {
   }
 
   const renderTask = (data) =>{
-    return data.map((item)=>{
+    return data.map((item,key)=>{
       let x
+      let y
       x = item.timeSpan.length;
-      const yes = totalList/x;
-      return (<Text w='full' h={10*x} borderColor='black' borderWidth={1}>{yes}</Text>)
+      y = (10*x)
+      return (<VStack w='90%' mb={1} h={y} justifyContent='space-between' style={{shadowColor: "#000",
+      shadowOffset: {
+	    width: 0,
+	    height: 2,
+      },
+      shadowOpacity: 0.23,
+      shadowRadius: 2.62,elevation: 4,}}   bg='#ffffff' borderRadius={25} p={5}>
+        <HStack space={10} justifyContent='space-between' top={-5}>
+        <Text>{item.subject}</Text>
+        <Text>{item.type}</Text>
+        </HStack>
+        <VStack>
+        <Text>{`${item.timeSpan[0]} to ${item.timeSpan[x-1]}`}</Text>
+        <Text>{item.type}</Text>
+        </VStack>
+        </VStack>)
     })
   }
 
@@ -56,8 +73,15 @@ const RouletteScreen = () => {
   return (
     <Center _light={{bg:'blueGray.50'}} _dark={{bg:'blueGray.900'}}   flex={1} >
       <VStack space={8} alignItems="center" w='full'>
-        <Box w='90%'  bg={upperBoxColor} borderRadius={25} height={upperBox}>
-
+        <Box w='90%'  bg={upperBoxColor} borderRadius={25} height={upperBox} justifyContent='center' alignItems='center'>
+        <VStack alignItems='center'>
+          <Heading>
+            M-W SCHEDULE
+          </Heading>
+          <Text>
+            III - Accounting
+          </Text>
+        </VStack>
         </Box>
         <Box w='full'  height={middleBoxHeight}>
           <ScrollView>
@@ -73,9 +97,13 @@ const RouletteScreen = () => {
           </HStack>
           </ScrollView>
         </Box>
-        <Box w='90%'  bg={upperBoxColor} borderRadius={25}  height={lowerBox}>
-          {totalList}
-          
+        <Box w='90%'  bg={upperBoxColor} borderRadius={25}  height={lowerBox} >
+        <HStack w='full' justifyContent='space-evenly' mt={5}>
+        <Icon color='white' size={10} as={<Feather  name='edit'/>}/>
+        <Icon color='white' size={10} as={<SimpleLineIcons name='drawer'/>}/>
+        <Icon color='white' size={10} as={<MaterialIcons name='design-services'/>}/>
+        <Icon color='white' size={10} as={<MaterialCommunityIcons name='archive-lock'/>}/>
+        </HStack>
         </Box>
       </VStack>
     </Center>
